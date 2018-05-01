@@ -138,4 +138,21 @@ public class Server {
             }
         }
     }
+
+    public SubmitTransactionResponse submitTransaction(String envelopeXdrBase64) throws IOException {
+        HttpUrl transactionsURI = serverURI.newBuilder().addPathSegment("transactions").build();
+        RequestBody requestBody = new FormBody.Builder().add("tx", envelopeXdrBase64).build();
+        Request submitTransactionRequest = new Request.Builder().url(transactionsURI).post(requestBody).build();
+
+        Response response = null;
+        try {
+            response = this.httpClient.newCall(submitTransactionRequest).execute();
+            SubmitTransactionResponse submitTransactionResponse = GsonSingleton.getInstance().fromJson(response.body().string(), SubmitTransactionResponse.class);
+            return submitTransactionResponse;
+        } finally {
+            if (response != null) {
+                response.close();
+            }
+        }
+    }
 }
