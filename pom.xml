@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>stellar</groupId>
     <artifactId>stellar-sdk</artifactId>
-    <version>0.2.0</version>
+    <version>0.2.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Stellar JAVA SDK</name>
     <url>https://github.com/stellar/java-stellar-sdk</url>
